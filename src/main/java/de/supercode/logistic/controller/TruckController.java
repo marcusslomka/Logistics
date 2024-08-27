@@ -29,4 +29,14 @@ public class TruckController {
     public List<Truck> getAllTrucks(){
         return truckService.getAllTrucks();
     }
+
+    @PutMapping("/{id}")
+    public Truck updateTruck(@PathVariable long id, @RequestBody Truck truck){
+        return truckService.updateTruck(id,truck);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTruck (@PathVariable long id){
+        truckService.deleteTruck(id);
+    }
 }
