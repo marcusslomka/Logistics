@@ -27,4 +27,15 @@ public class TruckService {
         truckrepository.findAll().forEach(trucks::add);
         return trucks;
     }
+
+    public Truck updateTruck(long id, Truck truck){
+        Truck toUpgradeTruck = truckrepository.findById(id).orElseThrow();
+        toUpgradeTruck.setDistance(truck.getDistance());
+        toUpgradeTruck.setModel(truck.getModel());
+        toUpgradeTruck.setTonnage(truck.getTonnage());
+        return truckrepository.save(toUpgradeTruck);
+    }
+    public void deleteTruck (long id){
+        truckrepository.deleteById(id);
+    }
 }
